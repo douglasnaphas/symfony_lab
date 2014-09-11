@@ -6,15 +6,9 @@
  * Time: 12:16 PM
  */
 
-$mysqli = new mysqli( 'localhost', 'symf', 'symfony_pw', 'blog_db' );
-$result = $mysqli->query( "SELECT id, title FROM post" );
+require_once 'model.php';
 
-$posts = array();
-while( $row = $result->fetch_assoc() ){
-	$posts[] = $row;
-}
-
-$mysqli->close();
+$posts = get_all_posts();
 
 // Include the HTML presentation code.
 require 'templates/list.php';
