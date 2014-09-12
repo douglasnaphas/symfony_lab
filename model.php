@@ -31,3 +31,16 @@ function get_all_posts(){
 
 	return $posts;
 }
+
+function get_post_by_id( $id ){
+	$link = open_database_connection();
+
+	$id = intval( $id );
+	$query = 'SELECT date, title, body FROM blog_db.post WHERE id = ' . $id;
+	$result = mysqli_query( $link, $query );
+	$row = mysqli_fetch_assoc( $result );
+
+	close_database_connection( $link );
+
+	return $row;
+}
