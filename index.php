@@ -8,14 +8,17 @@
 
 // load and initialize any global libraries
 require_once 'model.php';
-require_once 'controllers.php'
+require_once 'controllers.php';
+
+$URI_BASE = '/symfony_lab/';
 
 // route the request internally
 $uri = $_SERVER['REQUEST_URI'];
-if('index.php' == $uri){
+if($URI_BASE . 'index.php' == $uri){
 	list_action();
+} elseif ($URI_BASE .'index.php/show' == $uri && isset($_GET['id'])){
+	show_action($_GET['id']);
+} else {
+	header('HTTP/1.1 404 Not Found');
+	echo "<html><body><h1>Page Not Found: $uri</h1></body></html>";
 }
-$posts = get_all_posts();
-
-// Include the HTML presentation code.
-require 'templates/list.php';

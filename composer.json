@@ -1,0 +1,8 @@
+{
+    "require" : {
+        "symfony/symfony" : "2.4.*"
+    },
+    "autoload" : {
+        "files" : ["model.php", "controllers.php"]
+    }
+}
