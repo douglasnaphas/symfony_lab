@@ -5,7 +5,7 @@
 	<ul>
 		<?php foreach ( $posts as $post ): ?>
 			<li>
-				<a href = "/symfony_lab/show.php?id=<?php echo $post['id'] ?>">
+				<a href = "/symfony_lab/index.php/show?id=<?php echo $post['id'] ?>">
 					<?php echo $post['title'] ?>
 				</a>
 			</li>

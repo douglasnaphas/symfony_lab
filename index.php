@@ -13,7 +13,7 @@ require_once 'controllers.php';
 $URI_BASE = '/symfony_lab/';
 
 // route the request internally
-$uri = $_SERVER['REQUEST_URI'];
+$uri = $_SERVER['SCRIPT_NAME'] . $_SERVER['PATH_INFO'];
 if($URI_BASE . 'index.php' == $uri){
 	list_action();
 } elseif ($URI_BASE .'index.php/show' == $uri && isset($_GET['id'])){
