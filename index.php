@@ -6,19 +6,24 @@
  * Time: 12:16 PM
  */
 
-// load and initialize any global libraries
-require_once 'model.php';
-require_once 'controllers.php';
+require_once 'vendor/autoload.php';
 
-$URI_BASE = '/symfony_lab/';
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
-// route the request internally
-$uri = $_SERVER['SCRIPT_NAME'] . $_SERVER['PATH_INFO'];
-if($URI_BASE . 'index.php' == $uri){
-	list_action();
-} elseif ($URI_BASE .'index.php/show' == $uri && isset($_GET['id'])){
-	show_action($_GET['id']);
+$URI_BASE = '/symfony_lab';
+
+$request = Request::createFromGlobals();
+
+$uri = $URI_BASE . $request->getPathInfo();
+if('/' == $uri){
+	$response = list_action();
+} elseif('/show' == $uri && $request->query->has('id')){
+	$response = show_action($request->query->get('id'));
 } else {
-	header('HTTP/1.1 404 Not Found');
-	echo "<html><body><h1>Page Not Found: $uri</h1></body></html>";
+	$html = '<html><body><h1>Page Not Found</h1></body></html>';
+	$response = new Response($html, Response::HTTP_NOT_FOUND);
 }
+
+// echo the headers and send the response
+$response->send();

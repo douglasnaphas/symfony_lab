@@ -6,6 +6,8 @@
  * Time: 6:31 PM
  */
 
+use Symfony\Component\HttpFoundation\Response;
+
 function list_action(){
 	$posts = get_all_posts();
 	require 'templates/list.php';
