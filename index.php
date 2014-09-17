@@ -15,13 +15,13 @@ $URI_BASE = '/symfony_lab';
 
 $request = Request::createFromGlobals();
 
-$uri = $URI_BASE . $request->getPathInfo();
+$uri = $request->getPathInfo();
 if('/' == $uri){
 	$response = list_action();
 } elseif('/show' == $uri && $request->query->has('id')){
 	$response = show_action($request->query->get('id'));
 } else {
-	$html = '<html><body><h1>Page Not Found</h1></body></html>';
+	$html = "<html><body><h1>Page Not Found<br/>\$uri is $uri</h1></body></html>";
 	$response = new Response($html, Response::HTTP_NOT_FOUND);
 }
 

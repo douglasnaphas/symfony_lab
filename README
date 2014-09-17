@@ -1,1 +1,8 @@
 Put this in /var/www/symfony.
+
+I made some modifications to the instructions in the Symfony book, which may relate to defects in the book.
+1. The book uses the deprecated PHP mysql class. I used mysqli.
+2. In the front-controller version right before the Symfony Request and Response classes were incorporated,
+   the route for the show page is compared against a variable $uri. This variable is constructed from a
+   $_SERVER[] variable that includes the query string. My version at that stage uses $_SERVER[] elements
+   that do not.
