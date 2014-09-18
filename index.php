@@ -11,7 +11,7 @@ require_once 'vendor/autoload.php';
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-$URI_BASE = '/symfony_lab';
+//$URI_BASE = '/symfony_lab';
 
 $request = Request::createFromGlobals();
 
