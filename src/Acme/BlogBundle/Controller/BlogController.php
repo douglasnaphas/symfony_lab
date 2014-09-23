@@ -5,6 +5,13 @@
  * Date: 9/13/14
  * Time: 6:31 PM
  */
+namespace Acme\BlogBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class
+
+
 
 use Symfony\Component\HttpFoundation\Response;
 
